@@ -17,3 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('user/create', [\App\Http\Controllers\UserController::class, 'create']);
+Route::post('user/store', [\App\Http\Controllers\UserController::class, 'store']);
+
+Route::get('test', function (){
+    return \App\Models\User::find(7)->created_at;
+});

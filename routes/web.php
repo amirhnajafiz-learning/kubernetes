@@ -15,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('user/create', [\App\Http\Controllers\UserController::class, 'create']);
-Route::post('user/store', [\App\Http\Controllers\UserController::class, 'store']);
+Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])
+    ->name('user.index');
+
+Route::get('user/create', [\App\Http\Controllers\UserController::class, 'create'])
+    ->name('user.create');
+
+Route::post('user/store', [\App\Http\Controllers\UserController::class, 'store'])
+    ->name('user.store');
 
 

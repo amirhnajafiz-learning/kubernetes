@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
+    public function index()
+    {
+        $users = User::all();
+
+        //return view('index', compact('users')); # Way 1
+        return view('index')
+            ->with('users', $users)
+            ->with('foo', 'bar')
+            ->with('number', 1); # Way 2
+    }
+
     public function create()
     {
         return view('create');
@@ -27,6 +38,8 @@ class UserController extends Controller
 
         User::query()->create($inputs);*/
 
-        return redirect('/user/create');
+        return redirect()
+            ->route('user.index')
+            ->with('name', $user->name);
     }
 }

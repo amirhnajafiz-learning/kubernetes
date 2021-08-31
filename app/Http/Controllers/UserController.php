@@ -14,7 +14,7 @@ class UserController extends Controller
         $users = User::all();
 
         //return view('index', compact('users')); # Way 1
-        return view('index')
+        return view('components/index')
             ->with('users', $users)
             ->with('foo', 'bar')
             ->with('number', 1); # Way 2
@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('create');
+        return view('components/create');
     }
 
     public function store(Request $request)
